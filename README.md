@@ -97,13 +97,20 @@ We used Typescript and React-Typescript for this project. The development experi
 
 React / React-hooks
 
+For the front end, we used React. We modularized many components and re-used them by passing in different props. This is seen in our Course and Matches pages, as they both use the same StudentItem component. This allowed us to have less duplication than we would expect if we were to simply use html pages and separate css files. We also use styled components to handle our styling, this also allowed us to re-use styling for components to unify the look of our app. For routing, we use Switches from react-router. We built an AuthorizedSwitch and an UnauthorizedSwitch to show different views depending on whether or not a user is logged in. All of the above UI components were dependent on state, which we used React hooks and Contexts to pass down props from parent to child components. We updated the UI accordingly when the Context was updated. 
+
 MongoDB
+
 Early on in our project, we had a goal of building a matching algorithm based on hobbies. Along the way, we learned that our database schema would play a large role in the success of this algorithm. The end result of our schema essentially writes any incoming data twice. Once in the Account collection and once in the Hobby collection. For example, consider that user X likes Despacito. Our schema would store that X likes Despacito in X's account document, at the same time, the Despacito spotify_track document would store that the song is liked by X. 
 The flexibility of NoSQL allowed us to build the database to our liking, which as described in the example above, involved some data duplication. This referencing allowed us to match users with similar users appropriately. A typical SQL database might have more difficulty in achieving this due to the traditional constraints that a SQL database imposes like Key constraints, etc.
 
 Heroku
 
+We used Heroku to deploy our app, storing our environment variables using their functionality. This was helpful as there was minimal code configuration when deploying to production. We also utilized their mongoDB add-on instead of using mongoDB Atlas; it didn't matter much which one we chose and since we had already setup the add-on since the beginning we never switched over. Heroku is simple to use for deployments with the Procfile setup that they provide, as well we used their automatic CD deployment functionality and hooked that up to our master branch.
+
 Node / Express
+
+We used node to build our server. On top of that we used Express to build out our back-end. We created a custom Logger and ErrorHandler middleware. This allowed us to have cleaner code when handling errors as we would simply pass an error to the next() method and it would be taken in and logged by our custom ErrorHandling middleware. As well, Express allowed us to put in our own Auth middleware which verifies all production endpoint API requests for valid JWT tokens before allowing the API request to be resolved. 
 
 ___
 
