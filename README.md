@@ -22,7 +22,7 @@ ___
 | Ismail Mourad   | e5w2b   | iswmourad@hotmail.com     |
 | Title Jirakul   | i5i8    | watsapol555@hotmail.com   |
 
-__
+___
 
 ## Contributions
 
@@ -41,7 +41,7 @@ TODO
 #### Title Jirakul
 TODO
 
-__
+___
 
 ## Version Control
 
