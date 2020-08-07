@@ -34,8 +34,8 @@ api.use(sessionRoutes, sessionRouter)
 api.use(facebookRoutes, verifyAuthorizationToken, facebookRouter)
 api.use(spotifyRoutes, spotifyRouter)
 
-if (process.env.NODE_ENV === "development") {
+// if (process.env.NODE_ENV === "development") {
   api.use(testRoutes, testRouter)
-}
+// }
 
 export default api

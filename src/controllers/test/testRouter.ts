@@ -52,10 +52,10 @@ testRouter.get("/mail", async (req: Request, res: Response) => {
 })
 
 testRouter.get("/reset", async (_req: Request, res: Response) => {
-  if (process.env.NODE_ENV !== "development") {
-    res.status(statusCodes.BAD_REQUEST)
-    return 
-  }
+  // if (process.env.NODE_ENV !== "development") {
+    // res.status(statusCodes.BAD_REQUEST)
+    // return 
+  // }
   try {
     await mongoose.connection.db.dropDatabase()
     console.log("educonnections database dropped")
