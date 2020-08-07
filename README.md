@@ -39,7 +39,9 @@ TODO
 TODO
 
 #### Title Jirakul
-TODO
+- Implemented Facebook log in button on the front-end, allowing user to log in to their Facebook account and creating the access token for information retrieval.
+- Implemented a Facebook GET API which uses the generated access token to call various Facebook APIs to retrive user's information such as their displayed name, hometown, email, and Facebook likes.
+- Implemented the mock UI components of the matches and courses page.
 
 ___
 
@@ -137,8 +139,7 @@ ___
 
 ## Above and Beyond
 
-TODO
-___
+Beyond the tech stack we have learned in the course, we have integrated 2 social media APIs, from Facebook and Spotify, to get user's information such as Facebook likes, hometown, Spotify's top tracks and top artists as data to facilitate the matching algorithm that we have implemented from scratch. The social media integration was a challenge of its own, as it required us to set up developer account, whitelist our application, as well as implement the API call to retrieve user's access token for fetching their information. By working with external APIs, we had to design the schema of our database in such a way that it can maintain user's information and privacy, while maintaining the functionality of allowing us to efficiently query the data to populate the matches. In addition, we have also implemented a UBC parser from scratch. The parser is able to parse UBC calendar containing student's courses which user can download from UBC SSC in the .ics format. Rather than letting users populating their courses manually by inputting them in a text format, our application allows them to upload the UBC calendar to their accounts, adding the complexity to the scope of our project beyond what was taught in class.
 
 ## Next Steps 
 
