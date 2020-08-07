@@ -22,6 +22,29 @@ ___
 | Ismail Mourad   | e5w2b   | iswmourad@hotmail.com     |
 | Title Jirakul   | i5i8    | watsapol555@hotmail.com   |
 
+___
+
+## Contributions
+
+#### Allan Ting
+- implemented backend functionality for Spotify integration, Matching algorithm, /course GET and POST endpoints, /account GET endpoints, 
+- implemented frontend session verification to verify a user 
+- implemented frontend /profile/:id view, Course Upload page, Integration page
+- database schema planning and implementation
+
+#### Eduardo Garza
+TODO
+
+#### Ismail Mourad
+TODO
+
+#### Title Jirakul
+- Implemented Facebook log in button on the front-end, allowing user to log in to their Facebook account and creating the access token for information retrieval.
+- Implemented a Facebook GET API which uses the generated access token to call various Facebook APIs to retrive user's information such as their displayed name, hometown, email, and Facebook likes.
+- Implemented the mock UI components of the matches and courses page.
+
+___
+
 ## Version Control
 
 - Client Repository: [436I-client](https://github.com/eduardocgarza/436I-client)
@@ -91,29 +114,63 @@ ___
 
 ## Tech Used 
 
-Javascript / Typescript
+#### Javascript / Typescript
 
-React / React-hooks
+We used Typescript and React-Typescript for this project. The development experience was much smoother as it allowed us to strongly type and enforce the structure of data moving inside and outside our server. Integration of the front-end and back-end was simpler as we knew what to expect between the client and server. The downside is the extra work needed by our team in planning and coding. This came in the form of considering what data we needed to move around; as well, it required us to build these Objects/Interfaces to enforce these structures.
 
-MongoDB
+#### React / React-hooks
 
-Heroku
+For the front end, we used React. We modularized many components and re-used them by passing in different props. This is seen in our Course and Matches pages, as they both use the same StudentItem component. This allowed us to have less duplication than we would expect if we were to simply use html pages and separate css files. We also use styled components to handle our styling, this also allowed us to re-use styling for components to unify the look of our app. For routing, we use Switches from react-router. We built an AuthorizedSwitch and an UnauthorizedSwitch to show different views depending on whether or not a user is logged in. All of the above UI components were dependent on state, which we used React hooks and Contexts to pass down props from parent to child components. We updated the UI accordingly when the Context was updated. 
 
-Node / Express
+#### MongoDB
+
+Early on in our project, we had a goal of building a matching algorithm based on hobbies. Along the way, we learned that our database schema would play a large role in the success of this algorithm. The end result of our schema essentially writes any incoming data twice. Once in the Account collection and once in the Hobby collection. For example, consider that user X likes Despacito. Our schema would store that X likes Despacito in X's account document, at the same time, the Despacito spotify_track document would store that the song is liked by X. 
+The flexibility of NoSQL allowed us to build the database to our liking, which as described in the example above, involved some data duplication. This referencing allowed us to match users with similar users appropriately. A typical SQL database might have more difficulty in achieving this due to the traditional constraints that a SQL database imposes like Key constraints, etc.
+
+#### Heroku
+
+We used Heroku to deploy our app, storing our environment variables using their functionality. This was helpful as there was minimal code configuration when deploying to production. We also utilized their mongoDB add-on instead of using mongoDB Atlas; it didn't matter much which one we chose and since we had already setup the add-on since the beginning we never switched over. Heroku is simple to use for deployments with the Procfile setup that they provide, as well we used their automatic CD deployment functionality and hooked that up to our master branch.
+
+#### Node / Express
+
+We used node to build our server. On top of that we used Express to build out our back-end. We created a custom Logger and ErrorHandler middleware. This allowed us to have cleaner code when handling errors as we would simply pass an error to the next() method and it would be taken in and logged by our custom ErrorHandling middleware. As well, Express allowed us to put in our own Auth middleware which verifies all production endpoint API requests for valid JWT tokens before allowing the API request to be resolved. 
 
 ___
 
 ## Above and Beyond
 
-___
+Beyond the tech stack we have learned in the course, we have integrated 2 social media APIs, from Facebook and Spotify, to get user's information such as Facebook likes, hometown, Spotify's top tracks and top artists as data to facilitate the matching algorithm that we have implemented from scratch. The social media integration was a challenge of its own, as it required us to set up developer account, whitelist our application, as well as implement the API call to retrieve user's access token for fetching their information. By working with external APIs, we had to design the schema of our database in such a way that it can maintain user's information and privacy, while maintaining the functionality of allowing us to efficiently query the data to populate the matches. In addition, we have also implemented a UBC parser from scratch. The parser is able to parse UBC calendar containing student's courses which user can download from UBC SSC in the .ics format. Rather than letting users populating their courses manually by inputting them in a text format, our application allows them to upload the UBC calendar to their accounts, adding the complexity to the scope of our project beyond what was taught in class.
 
-## Next Steps
+## Next Steps 
 
-UI/UX
+#### #1 Priority - UI/UX
+- Test the current user experience with general users to determine what needs to highlighted in the workflow and determine if we should build something to help new users step through our application
+- Improve the User Experience for courses. Currently, once you upload a calendar file, you can no longer upload a new calendar. This would mean that when a new semester comes, the user would not be able to upload their new schedule
+- Improve the experience after finding a match. Currently users have no actionable step in our app past the matching stage. The current expected workaround for users is to navigate to a match's profile and email them. This is probably not intuitive to a user
 
-More Functionalities
+#### #2 Priority - More Functionalities
+- Allow users to opt out and deauthorize integrated apps, currently we keep track of who likes what songs, artists, likes, etc. Using this same information, we should be able to determine what data needs to be removed from our database when a user wants to deauthorize an integration.
+- More Integrations
+	- Create new integrations (Reddit, Instagram, Snapchat)
+		- Reddit 
+			- get a user's followed subreddits
+			- get a user's most posted subreddits
+			- other basic data that we can pull from Redit
+		- Instagram
+			- get a user's followed profiles
+			- get a user's following profiles
+			- get a user's most recent posts so that we can show their instagram feed
+			- get a user's most liked posts, most commented posts
+			- get a user's post location tags
+		- Snapchat
+			- get basic user data like snapscore, most snapped contacts, streaks
+- Basic social features
+	- implement a chat feature that allows users to chat with one another within our application
+	- Add "Community Pages" where users can discuss their hobbies about that page's specific topic
+		eg. Pages for every artist in our database where people can find a list of all other users that like some artist and can discuss with one another through some sort of post feed
 
-More Integrations
+#### #3 Priority - Development Experience
+- implement a test suite to allow for automated unit testing and integration testing. This should eventually allow for a Continuous Integration pipeline to complement our Continuous Deployment set-up. This would help ease the workload as our current testing process is manual
 
 ___
 
