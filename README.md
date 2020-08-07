@@ -59,8 +59,8 @@ ___
 
 ## Version Control
 
-- Client Repository: [github.com436I-client](https://github.com/eduardocgarza/436I-client)
-- Server Repository: [github.com436I-server](https://github.com/eduardocgarza/436I-server)
+- Client Repository: [github.com/436I-client](https://github.com/eduardocgarza/436I-client)
+- Server Repository: [github.com/436I-server](https://github.com/eduardocgarza/436I-server)
 
 ___
 
