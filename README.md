@@ -151,11 +151,11 @@ ___
 
 ## Above and Beyond
 
-## 1. 3rd Party Integrations
+### 1. 3rd Party Integrations
 
 Beyond the tech stack we have learned in the course, we have integrated 2 social media APIs, from Facebook and Spotify, to get user's information such as Facebook likes, hometown, Spotify's top tracks and top artists as data to facilitate the matching algorithm that we have implemented from scratch. The social media integration was a challenge of its own, as it required us to set up developer account, whitelist our application, as well as implement the API call to retrieve user's access token for fetching their information. By working with external APIs, we had to design the schema of our database in such a way that it can maintain user's information and privacy, while maintaining the functionality of allowing us to efficiently query the data to populate the matches. In addition, we have also implemented a UBC parser from scratch. The parser is able to parse UBC calendar containing student's courses which user can download from UBC SSC in the .ics format. Rather than letting users populating their courses manually by inputting them in a text format, our application allows them to upload the UBC calendar to their accounts, adding the complexity to the scope of our project beyond what was taught in class.
 
-### Matching Algorithm
+### 2. Matching Algorithm
 
 We also made a matching algorithm that matches users based on their likes and hobbies. Instead of looping through every single user that is in our database, we match them in "buckets", searching for matches only in the topics a given user already likes (tracks, artists, facebook likes). This significantly reduces the work needed to be done to generate matches. In order to facilitate this, we were required to put some thought into planning our database schema. Specifically, we have an almost circular referencing in the database in that a user has an array of artists, tracks and facebook likes that they have indicated and those same artist, track and facebook like documents point to the accounts which like that specific document. With the way we have set up our database, we are able to easily parse out the information we need about a user and his/her matches into a hashmap which we pass back to the front end.
 
@@ -167,13 +167,13 @@ ___
 
 ## Next Steps 
 
-#### #1 Priority - UI/UX
+#### 1. Priority - UI/UX
 
 - Test the current user experience with general users to determine what needs to highlighted in the workflow and determine if we should build something to help new users step through our application
 - Improve the User Experience for courses. Currently, once you upload a calendar file, you can no longer upload a new calendar. This would mean that when a new semester comes, the user would not be able to upload their new schedule
 - Improve the experience after finding a match. Currently users have no actionable step in our app past the matching stage. The current expected workaround for users is to navigate to a match's profile and email them. This is probably not intuitive to a user
 
-#### #2 Priority - More Functionalities
+#### 2. Priority - More Functionalities
 
 - Allow users to opt out and deauthorize integrated apps, currently we keep track of who likes what songs, artists, likes, etc. Using this same information, we should be able to determine what data needs to be removed from our database when a user wants to deauthorize an integration.
 - More Integrations
@@ -195,7 +195,7 @@ ___
 	- Add "Community Pages" where users can discuss their hobbies about that page's specific topic
 		**eg.** Pages for every artist in our database where people can find a list of all other users that like some artist and can discuss with one another through some sort of post feed
 
-#### #3 Priority - Development Experience
+#### 3. Priority - Development Experience
 
 - Implement a test suite to allow for automated unit testing and integration testing. 
   - This should eventually allow for a Continuous Integration pipeline to complement our Continuous Deployment set-up. This would help ease the workload as our current testing process is manual
