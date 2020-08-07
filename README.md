@@ -36,7 +36,10 @@ ___
 TODO
 
 #### Ismail Mourad
-TODO
+- Implelemented front-end authentication
+- Impleneted user profile functionality on the front-end
+- Implemented /profile/:id endpoint
+- Implemented authentication mock UI Components
 
 #### Title Jirakul
 - Implemented Facebook log in button on the front-end, allowing user to log in to their Facebook account and creating the access token for information retrieval.
